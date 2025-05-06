@@ -2,7 +2,7 @@
   "name": "exam-aid",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://yexam-aid.github.io/exam-aid",
+  "homepage": "https://exam-aid.github.io/exam-aid", 
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
@@ -19,12 +19,13 @@
     "gh-pages": "^6.3.0"
   },
   "scripts": {
-    "start": "cross-env BROWSER=chrome react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+  "start": "cross-env BROWSER=chrome react-scripts start",
+  "build": "react-scripts build",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d build"
+
   },
   "eslintConfig": {
     "extends": [
