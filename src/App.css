@@ -1,0 +1,91 @@
+/* App.css */
+
+/* General app styles */
+.App {
+  background-color: #f0f4f8;  /* Background color */
+  height: 100vh;  /* Full viewport height */
+  font-family: Arial, sans-serif;  /* Font for the app */
+  display: flex;  /* Flexbox layout */
+  justify-content: flex-start;  /* Align content to the left */
+  align-items: flex-start;  /* Align content to the top */
+  padding: 20px;  /* Space from edges of the screen */
+}
+
+/* Header style */
+.App-header {
+  background: white;  /* White background for the header */
+  padding: 40px;  /* Padding inside the header */
+  border-radius: 16px;  /* Rounded corners */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);  /* Subtle shadow */
+}
+
+/* General button styles for selection pages (Updated for bevel effects) */
+button {
+  margin-top: 20px;  /* Space above buttons */
+  padding: 12px 24px;  /* Padding inside the buttons */
+  background-color: #007bff;  /* Blue background */
+  color: white;  /* White text */
+  font-size: 16px;  /* Font size */
+  border: none;  /* Remove border */
+  border-radius: 8px;  /* Rounded corners */
+  cursor: pointer;  /* Pointer cursor on hover */
+  transition: all 0.3s ease;  /* Smooth transition effect */
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);  /* Subtle shadow */
+}
+
+/* Red button style */
+.red-button {
+  background-color: #d9534f;  /* Red background */
+  color: white;  /* White text */
+  border: none;
+  padding: 12px 24px;  /* Padding inside the button */
+  border-radius: 8px;  /* Rounded corners */
+  font-size: 16px;  /* Font size */
+  cursor: pointer;  /* Pointer cursor on hover */
+  transition: all 0.3s ease;  /* Smooth transition effect */
+  margin-top: 20px;  /* Space above the button */
+}
+
+/* Hover effects for the red button */
+.red-button:hover {
+  background-color: #c9302c;  /* Darker red on hover */
+  transform: translateY(-2px);  /* Slight lift on hover */
+}
+
+/* Active state for the red button */
+.red-button:active {
+  background-color: #ac2925;  /* Even darker red on active */
+  transform: translateY(2px);  /* Slight push on active */
+}
+
+/* Hover effect for general buttons */
+button:hover {
+  background-color: #0056b3;  /* Darker blue on hover */
+  transform: scale(1.05);  /* Slightly increase button size */
+}
+
+/* Active state for general buttons */
+button:active {
+  background-color: #004085;  /* Darker blue on click */
+  transform: scale(1);  /* Return to original size on click */
+}
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .print-area, .print-area * {
+    visibility: visible;
+  }
+
+  .print-area {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 100%;
+  }
+
+  button {
+    display: none !important;
+  }
+}
