@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Exam-aid/static/css/main.b57c205f.css",
-    "main.js": "/Exam-aid/static/js/main.02e4cb3e.js",
-    "static/js/453.aab3f9e3.chunk.js": "/Exam-aid/static/js/453.aab3f9e3.chunk.js",
-    "static/media/logo.jpg": "/Exam-aid/static/media/logo.f9c99522b77d7987e4a3.jpg",
-    "index.html": "/Exam-aid/index.html",
-    "main.b57c205f.css.map": "/Exam-aid/static/css/main.b57c205f.css.map",
-    "main.02e4cb3e.js.map": "/Exam-aid/static/js/main.02e4cb3e.js.map",
-    "453.aab3f9e3.chunk.js.map": "/Exam-aid/static/js/453.aab3f9e3.chunk.js.map"
+    "main.css": "/exam-aid/static/css/main.b57c205f.css",
+    "main.js": "/exam-aid/static/js/main.cf9e5025.js",
+    "static/js/453.aab3f9e3.chunk.js": "/exam-aid/static/js/453.aab3f9e3.chunk.js",
+    "static/media/logo.jpg": "/exam-aid/static/media/logo.f9c99522b77d7987e4a3.jpg",
+    "index.html": "/exam-aid/index.html",
+    "main.b57c205f.css.map": "/exam-aid/static/css/main.b57c205f.css.map",
+    "main.cf9e5025.js.map": "/exam-aid/static/js/main.cf9e5025.js.map",
+    "453.aab3f9e3.chunk.js.map": "/exam-aid/static/js/453.aab3f9e3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b57c205f.css",
-    "static/js/main.02e4cb3e.js"
+    "static/js/main.cf9e5025.js"
   ]
 }
