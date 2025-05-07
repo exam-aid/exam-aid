@@ -19,6 +19,7 @@ function QuizPage() {
 
   const [allQuizzes, setAllQuizzes] = useState([]);
 
+  // Load quizzes from localStorage
   useEffect(() => {
     const quizzes = JSON.parse(localStorage.getItem("quizQuestions")) || [];
     setAllQuizzes(quizzes);
@@ -98,7 +99,7 @@ function QuizPage() {
     const subjectQuizzes = allQuizzes
       .filter((q) => q.subject.toLowerCase() === subject.toLowerCase())
       .sort((a, b) => {
-        // extract numeric part of quizId (e.g. quiz1 → 1)
+        // Extract numeric part of quizId (e.g. quiz1 → 1)
         const aNum = parseInt(a.quizId.replace(/\D/g, ""), 10);
         const bNum = parseInt(b.quizId.replace(/\D/g, ""), 10);
         return aNum - bNum;
@@ -108,6 +109,7 @@ function QuizPage() {
       (q) => q.quizId.toLowerCase() === quizId.toLowerCase()
     );
 
+    // Find next quiz that hasn't been completed
     for (let i = currentIndex + 1; i < subjectQuizzes.length; i++) {
       const nextQuiz = subjectQuizzes[i];
       if (!completed.includes(nextQuiz.quizId)) {
@@ -116,7 +118,7 @@ function QuizPage() {
       }
     }
 
-    // No next quiz
+    // No more quizzes, navigate to subject selection
     navigate("/subject-selection", { state: { subject } });
   };
 
