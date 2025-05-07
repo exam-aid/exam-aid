@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import logo from '../assets/logo.jpg';
+import logo from "../assets/logo.jpg";
 
 function QuizPage() {
   const navigate = useNavigate();
@@ -17,13 +17,16 @@ function QuizPage() {
   const [completed, setCompleted] = useState(false);
   const [name, setName] = useState("");
 
+  const [allQuizzes, setAllQuizzes] = useState([]);
+
   useEffect(() => {
-    const allQuizzes = JSON.parse(localStorage.getItem("quizQuestions")) || [];
+    const quizzes = JSON.parse(localStorage.getItem("quizQuestions")) || [];
+    setAllQuizzes(quizzes);
 
     const lowerSubject = subject?.toLowerCase();
     const lowerQuizId = quizId?.toLowerCase();
 
-    const currentQuiz = allQuizzes.find(
+    const currentQuiz = quizzes.find(
       (q) =>
         q.subject.toLowerCase() === lowerSubject &&
         q.quizId.toLowerCase() === lowerQuizId
@@ -89,6 +92,34 @@ function QuizPage() {
     handleNext();
   };
 
+  const startNextQuizIfAvailable = () => {
+    const completed = JSON.parse(localStorage.getItem("completedQuizzes")) || [];
+
+    const subjectQuizzes = allQuizzes
+      .filter((q) => q.subject.toLowerCase() === subject.toLowerCase())
+      .sort((a, b) => {
+        // extract numeric part of quizId (e.g. quiz1 → 1)
+        const aNum = parseInt(a.quizId.replace(/\D/g, ""), 10);
+        const bNum = parseInt(b.quizId.replace(/\D/g, ""), 10);
+        return aNum - bNum;
+      });
+
+    const currentIndex = subjectQuizzes.findIndex(
+      (q) => q.quizId.toLowerCase() === quizId.toLowerCase()
+    );
+
+    for (let i = currentIndex + 1; i < subjectQuizzes.length; i++) {
+      const nextQuiz = subjectQuizzes[i];
+      if (!completed.includes(nextQuiz.quizId)) {
+        navigate(`/quiz/${subject}/${nextQuiz.quizId}?subject=${subject}&quizId=${nextQuiz.quizId}`);
+        return;
+      }
+    }
+
+    // No next quiz
+    navigate("/subject-selection", { state: { subject } });
+  };
+
   if (questions.length === 0) {
     return <div style={{ padding: "20px" }}>Loading quiz...</div>;
   }
@@ -109,7 +140,6 @@ function QuizPage() {
           }}
         />
 
-        {/* ✅ Print-only area */}
         <div className="print-area">
           <img
             src={logo}
@@ -161,6 +191,7 @@ function QuizPage() {
             onClick={() => window.print()}
             style={{
               padding: "10px 20px",
+              marginRight: "10px",
               backgroundColor: "#fbc02d",
               color: "#333",
               border: "none",
@@ -169,6 +200,19 @@ function QuizPage() {
             }}
           >
             🖨️ Print Results
+          </button>
+          <button
+            onClick={startNextQuizIfAvailable}
+            style={{
+              padding: "10px 20px",
+              backgroundColor: "#9c27b0",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              fontSize: "16px",
+            }}
+          >
+            Next Quiz
           </button>
         </div>
       </div>

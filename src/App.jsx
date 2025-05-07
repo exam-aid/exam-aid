@@ -67,7 +67,7 @@ function SubjectSelection() {
 function App() {
   return (
     <ErrorBoundary>
-      <Router>
+      <Router basename="/exam-aid"> {/* Set the basename for GitHub Pages */}
         <LogoutButton />
         <Routes>
           <Route path="/" element={<Layout><LandingPage /></Layout>} />
